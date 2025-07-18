@@ -1,0 +1,38 @@
+<div class="obra-list-container">
+  <h1>Obras</h1>
+
+  <ng-container *ngIf="loading; else listaObras">
+    <span>Cargando...</span>
+  </ng-container>
+
+  <ng-template #listaObras>
+    <div class="obra-list">
+      <div *ngFor="let obra of products; trackBy: trackByFn" class="obra-card">
+        <img [src]="obra.thumnails" [alt]="obra.title" />
+
+        <h3>{{ obra.title }}</h3>
+        <p>{{ obra.location }}</p>
+
+        <div>
+          <span class="obra-card__monto-original">${{ obra.monto_obra }}</span>
+          <span class="obra-card__monto-final">${{ obra.nuevo_monto_obra }}</span>
+        </div>
+
+        <div>
+          <p>Inicio: {{ obra.fecha_inicio | date:'dd/MM/yyyy' }}</p>
+          <p>Fin: {{ obra.fecha_fin | date:'dd/MM/yyyy' }}</p>
+        </div>
+
+        <p>Estado: {{ obra.status }}</p>
+        <a [href]="obra.url" target="_blank">Ver proyecto</a>
+
+        <div *ngIf="obra.tags?.length > 0">
+          <p>Tags:</p>
+          <ul>
+            <li *ngFor="let tag of obra.tags">{{ tag }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
