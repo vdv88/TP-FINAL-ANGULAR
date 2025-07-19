@@ -1,0 +1,92 @@
+<mat-card class="contact-card custom-contact-card">
+  <mat-card-content>
+    <form #contactForm="ngForm" (ngSubmit)="enviar(contactForm)" novalidate *ngIf="!enviado" class="contact-form-grid">
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="contact-field">
+          <mat-label>Nombre *</mat-label>
+          <input matInput id="nombre" name="nombre" [(ngModel)]="contacto.nombre" required minlength="3" #nombre="ngModel" placeholder="e.g. Juan">
+          <mat-error *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <span *ngIf="nombre.errors?.['required']">El nombre es obligatorio.</span>
+            <span *ngIf="nombre.errors?.['minlength']">Mínimo 3 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="contact-field">
+          <mat-label>Apellido *</mat-label>
+          <input matInput id="apellido" name="apellido" [(ngModel)]="contacto.apellido" required minlength="2" #apellido="ngModel" placeholder="e.g. Pérez">
+          <mat-error *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+            <span *ngIf="apellido.errors?.['required']">El apellido es obligatorio.</span>
+            <span *ngIf="apellido.errors?.['minlength']">Mínimo 2 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="contact-field">
+          <mat-label>Provincia *</mat-label>
+          <mat-select id="provincia" name="provincia" [(ngModel)]="contacto.provincia" required #provincia="ngModel" placeholder="Selecciona una...">
+            <mat-option value="" disabled>Selecciona una...</mat-option>
+            <mat-option *ngFor="let p of provincias" [value]="p">{{ p }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="provincia.invalid && (provincia.dirty || provincia.touched)">
+            <span *ngIf="provincia.errors?.['required']">La provincia es obligatoria.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="contact-field">
+          <mat-label>Empresa *</mat-label>
+          <input matInput id="empresa" name="empresa" [(ngModel)]="contacto.empresa" required minlength="2" #empresa="ngModel" placeholder="e.g. Acme Co">
+          <mat-error *ngIf="empresa.invalid && (empresa.dirty || empresa.touched)">
+            <span *ngIf="empresa.errors?.['required']">La empresa es obligatoria.</span>
+            <span *ngIf="empresa.errors?.['minlength']">Mínimo 2 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="contact-field">
+          <mat-label>Número de teléfono *</mat-label>
+          <input matInput id="telefono" name="telefono" [(ngModel)]="contacto.telefono" required minlength="8" #telefono="ngModel" placeholder="e.g. +54 11 1234 5678" type="tel">
+          <mat-error *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+            <span *ngIf="telefono.errors?.['required']">El teléfono es obligatorio.</span>
+            <span *ngIf="telefono.errors?.['minlength']">Mínimo 8 dígitos.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="contact-field">
+          <mat-label>Volumen anual construido (m²) *</mat-label>
+          <input matInput id="volumen" name="volumen" [(ngModel)]="contacto.volumen" required min="1" #volumen="ngModel" placeholder="e.g. 5000" type="number">
+          <mat-error *ngIf="volumen.invalid && (volumen.dirty || volumen.touched)">
+            <span *ngIf="volumen.errors?.['required']">El volumen es obligatorio.</span>
+            <span *ngIf="volumen.errors?.['min']">El volumen debe ser mayor a 0.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="contact-field full-width">
+          <mat-label>Email *</mat-label>
+          <input matInput id="email" name="email" [(ngModel)]="contacto.email" required email #email="ngModel" placeholder="e.g. juan@email.com">
+          <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+            <span *ngIf="email.errors?.['required']">El email es obligatorio.</span>
+            <span *ngIf="email.errors?.['email']">Formato de email inválido.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="contact-field full-width">
+          <mat-label>Comentarios</mat-label>
+          <textarea matInput id="mensaje" name="mensaje" [(ngModel)]="contacto.mensaje" #mensaje="ngModel" placeholder="Dejanos tu mensaje..."></textarea>
+        </mat-form-field>
+      </div>
+      <div class="form-row form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid" class="contact-btn">
+          Hablar con un experto
+        </button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid" class="contact-btn">
+          Enviar
+        </button>
+      </div>
+    </form>
+    <div *ngIf="enviado" class="success">
+      <mat-icon color="primary">check_circle</mat-icon>
+      <h2>¡Mensaje enviado con éxito!</h2>
+      <p>Gracias por contactarnos.</p>
+      <a mat-button color="accent" routerLink="/home"><mat-icon>arrow_back</mat-icon> Volver al Home</a>
+    </div>
+  </mat-card-content>
+</mat-card> 

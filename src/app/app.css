@@ -1,3 +1,82 @@
-h1{
-    color: red;
+body, html {
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  font-size: 18px;
+  color: #111;
+  background: #fff;
+}
+.app-toolbar {
+  background: #fff;
+  color: #111;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 0 #e0e0e0;
+}
+.brand-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #111;
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.toolbar-btn {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #111 !important;
+  background: transparent;
+  border-radius: 8px;
+  margin-left: 8px;
+  padding: 6px 18px;
+  transition: background 0.2s;
+}
+.toolbar-btn:hover {
+  background: #f5f5f5;
+}
+.main-content {
+  min-height: calc(100vh - 64px);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: #222;
+  letter-spacing: 0.01em;
+}
+p, span, label, .mat-card-content, .mat-card-title, .mat-card-subtitle {
+  font-size: 1.05rem;
+  color: #333;
+}
+.mat-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.mat-card-subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+.mat-button, .mat-raised-button {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.brand-link {
+  text-decoration: none !important;
+  background: transparent !important;
+  color: #111 !important;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  padding: 0 16px 0 0;
+  min-width: unset;
+  cursor: pointer;
+}
+.brand-link:hover {
+  background: #f5f5f5 !important;
 }

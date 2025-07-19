@@ -1,54 +1,50 @@
-import { Component } from '@angular/core';
-import { Product } from '../product/product';
+import { Component, OnInit } from '@angular/core';
+import { ProductsService, ProductInterface } from '../services/products.service';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
+import { Contact } from '../contact/contact';
 
 @Component({
   selector: 'app-home',
-  imports: [Product],
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule, RouterModule, Contact],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {
-  nombre = 'pedro' //Esto es un atributo, pero pueden entenderlo como una variable interna del componente app
-  contador = 0
-  productos = [
-    {
-      nombre: 'Producto 1',
-      precio: 10,
-      id: 1
-    },
-    {
-      nombre: 'Producto 2',
-      precio: 20,
-      id: 2
-    },
-    {
-      nombre: 'Producto 3',
-      precio: 30,
-      id: 3
-    },
-    {
-      nombre: 'Producto 4',
-      precio: 10,
-      id: 4
-    },
-    {
-      nombre: 'Producto 5',
-      precio: 20,
-      id: 5
-    },
-    {
-      nombre: 'Producto 6',
-      precio: 30,
-      id: 6
-    }
-  ]
+export class Home implements OnInit {
+  nombre = 'pedro';
+  contador = 0;
+  productos: ProductInterface[] = [];
+  loading: boolean = true;
+
+  constructor(private productsService: ProductsService) {}
+
+  ngOnInit() {
+    this.productsService.getProducts().subscribe({
+      next: (products: ProductInterface[]) => {
+        this.productos = products.slice(0, 3);
+        this.loading = false;
+      },
+      error: (error: any) => {
+        console.error('Error al cargar productos', error);
+        this.loading = false;
+      }
+    });
+  }
+
   saludar() {
-    alert('Hola a todos')
+    alert('Hola a todos');
   }
   incrementar() {
-    this.contador = this.contador + 1
+    this.contador = this.contador + 1;
   }
   mostrarPorConsola() {
-    console.log('Contador vale: ' + this.contador)
+    console.log('Contador vale: ' + this.contador);
+  }
+  trackById(index: number, item: ProductInterface) {
+    return item.id;
   }
 }

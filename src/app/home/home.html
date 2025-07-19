@@ -1,14 +1,22 @@
-<h1>Hola mundo</h1>
-<p>Hola que tal {{nombre}}</p>
-<button (click)="saludar()">Click</button>
-<br/>
-<!-- Vamos a hacer un contador que se pueda ir incrementado a medida le damos al boton de + -->
-<span>Contador: {{contador}}</span>
-<button (click)="incrementar()">Incrementar</button>
-<div>
-    <!-- For of statement: Sirve para recorrer un array en Angular (SOLO VALIDO PARA ARRAYS (No json)) -->
-    <!-- Track statement: Sirve para identificar cada elemento del array al momento de renderizarlo -->
-    @for(producto of productos; track producto.id ){
-        <app-product [nombre]="producto.nombre" [precio]="producto.precio"/>
-    }
+<div class="landing-container">
+  <div class="eyebrow">CONSTRUCTION SCHEDULING SOFTWARE</div>
+  <h1 class="main-message">Ayudamos a evitar retrasos en las obras para cumplir con los plazos.</h1>
+  <p class="secondary-message">
+    OffSite es el primer software de programación y coordinación de obra totalmente integrado creado específicamente para la construcción.
+  </p>
 </div>
+
+<footer class="footer-contact">
+  <div class="footer-contact-content">
+    <div class="footer-contact-left">
+      <div class="footer-eyebrow">
+        <span class="dot"></span> GET STARTED
+      </div>
+      <h2 class="footer-title">¿Listo para probar OffSite?</h2>
+      <p class="footer-desc">Únete a cientos de constructores que ya están ahorrando tiempo y dinero programando mejor.</p>
+    </div>
+    <div class="footer-contact-right">
+      <app-contact></app-contact>
+    </div>
+  </div>
+</footer>

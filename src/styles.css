@@ -6,3 +6,75 @@
     padding: 0;
     margin: 0;
 }
+
+/* Material Icons */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Estilos globales para mat-select panel - VERSIÓN AGRESIVA */
+body .cdk-overlay-container .mat-select-panel,
+body .cdk-overlay-container .mat-select-panel *,
+body .mat-select-panel,
+body .mat-select-panel * {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body .cdk-overlay-container .mat-option,
+body .mat-option {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body .cdk-overlay-container .mat-option:hover:not(.mat-option-disabled),
+body .mat-option:hover:not(.mat-option-disabled) {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+body .cdk-overlay-container .mat-option.mat-selected:not(.mat-option-multiple),
+body .mat-option.mat-selected:not(.mat-option-multiple) {
+  background-color: #3bbf4a !important;
+  color: #000 !important;
+}
+
+body .cdk-overlay-container .mat-option.mat-active,
+body .mat-option.mat-active {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+/* Estilos específicos para el overlay con máxima especificidad */
+html body .cdk-overlay-container .mat-select-panel {
+  background-color: #000 !important;
+  border: 1px solid #333 !important;
+}
+
+html body .cdk-overlay-container .mat-option {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+html body .cdk-overlay-container .mat-option:hover:not(.mat-option-disabled) {
+  background-color: #333 !important;
+}
+
+html body .cdk-overlay-container .mat-option.mat-selected:not(.mat-option-multiple) {
+  background-color: #3bbf4a !important;
+  color: #000 !important;
+}

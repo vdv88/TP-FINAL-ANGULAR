@@ -7,6 +7,7 @@ export interface ProductInterface {
   id: number;
   nombre_barrio: string;
   title: string;
+  description: string;
   image: string;
   location: string;
   monto_obra: number;

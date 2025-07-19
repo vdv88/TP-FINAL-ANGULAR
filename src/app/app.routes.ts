@@ -3,28 +3,42 @@ import { Chat } from './chat/chat';
 import { Home } from './home/home';
 import { Posts } from './posts/posts';
 import { Products } from './products/products';
+import { ProductDetail } from './product/product';
+import { Contact } from './contact/contact';
 
-//Queremos hacer una ruta para una mensajeria tipo whatsapp o chatbot
-//Ejemplo: /chat
+const LoginRedirect = () => import('./login-redirect').then(m => m.LoginRedirect);
+
 export const routes: Routes = [
     {
-        path: 'chat', //Direccion de la ruta
-        component: Chat //Componente que se va a renderizar cuando el cliente entre a esta ruta
+        path: 'chat',
+        component: Chat
     },
     {
-        path: 'home', //Direccion de la ruta
-        component: Home //Componente que se va a renderizar cuando el cliente entre a esta ruta
+        path: 'home',
+        component: Home
     },
     {
-        path: 'posts', //Direccion de la ruta
-        component: Posts //Componente que se va a renderizar cuando el cliente entre a esta ruta
+        path: 'posts',
+        component: Posts
     },
     {
         path: 'products',
         component: Products
     },
     {
-        path: '**', //Cualquier ruta que no se haya definido arriba
+        path: 'products/:id',
+        component: ProductDetail
+    },
+    {
+        path: 'contact',
+        component: Contact
+    },
+    {
+        path: 'login',
+        loadComponent: LoginRedirect
+    },
+    {
+        path: '**',
         component: Home
     }
 ];

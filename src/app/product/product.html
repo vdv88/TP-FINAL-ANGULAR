@@ -1,5 +1,161 @@
-<div>
-    <h2>Producto: {{nombre}}</h2>
-    <span>Precio: ${{precio}}</span>
-    <button>Comprar</button>
+<!-- Top Header -->
+<div class="top-header">
+  <div class="header-content">
+    <div class="header-left">
+      <button mat-button class="back-button" routerLink="/products">
+        <mat-icon>arrow_back</mat-icon>
+        Volver
+      </button>
+    </div>
+    <div class="header-right">
+      <div class="user-info-header">
+        <div class="user-name">Daniel Vergara</div>
+        <div class="user-role">Administrador</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>Cargando proyecto...</p>
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <mat-icon class="error-icon">error</mat-icon>
+    <h3>Error al cargar el proyecto</h3>
+    <p>{{ error }}</p>
+    <button mat-raised-button color="primary" routerLink="/products">
+      Volver al listado
+    </button>
+  </div>
+
+  <div *ngIf="!loading && !error && product" class="product-detail">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="hero-image">
+        <img [src]="product.thumnails" [alt]="product.nombre_barrio" />
+        <div class="hero-overlay">
+          <div class="project-status">
+            <span class="status-badge">{{ product.status || 'En progreso' }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-content">
+        <div class="project-header">
+          <h1 class="project-title">{{ product.nombre_barrio }}</h1>
+          <p class="project-subtitle">{{ product.title }}</p>
+          <div class="project-location">
+            <mat-icon>location_on</mat-icon>
+            <span>{{ product.location || 'Ubicación no especificada' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Details -->
+    <div class="details-section">
+      <div class="details-grid">
+        <!-- Financial Info -->
+        <div class="detail-card financial-card">
+          <h3 class="card-title">
+            <mat-icon>attach_money</mat-icon>
+            Información Financiera
+          </h3>
+          <div class="financial-info">
+            <div class="price-item">
+              <span class="price-label">Monto Original</span>
+              <span class="price-value original">$ {{ product.monto_obra }}</span>
+            </div>
+            <div class="price-item">
+              <span class="price-label">Monto Final</span>
+              <span class="price-value final">$ {{ product.nuevo_monto_obra }}</span>
+            </div>
+            <div class="savings">
+              <span class="savings-label">Ahorro</span>
+              <span class="savings-value">$ {{ (product.monto_obra - product.nuevo_monto_obra) | number:'1.0-0' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Info -->
+        <div class="detail-card timeline-card">
+          <h3 class="card-title">
+            <mat-icon>schedule</mat-icon>
+            Cronograma
+          </h3>
+          <div class="timeline-info">
+            <div class="timeline-item">
+              <mat-icon>play_arrow</mat-icon>
+              <div class="timeline-content">
+                <span class="timeline-label">Fecha de Inicio</span>
+                <span class="timeline-date">{{ product.fecha_inicio | date:'dd/MM/yyyy' }}</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <mat-icon>check_circle</mat-icon>
+              <div class="timeline-content">
+                <span class="timeline-label">Fecha de Finalización</span>
+                <span class="timeline-date">{{ product.fecha_fin | date:'dd/MM/yyyy' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Info -->
+        <div class="detail-card info-card">
+          <h3 class="card-title">
+            <mat-icon>info</mat-icon>
+            Información del Proyecto
+          </h3>
+          <div class="project-info">
+            <div class="info-item">
+              <span class="info-label">Categoría</span>
+              <span class="info-value">{{ product.category || 'No especificada' }}</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Estado</span>
+              <span class="info-value status">{{ product.status || 'En progreso' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="detail-card description-card">
+          <h3 class="card-title">
+            <mat-icon>description</mat-icon>
+            Descripción
+          </h3>
+          <div class="description-content">
+            <p>{{ product.description || 'No hay descripción disponible para este proyecto.' }}</p>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div *ngIf="product.tags && product.tags.length > 0" class="detail-card tags-card">
+          <h3 class="card-title">
+            <mat-icon>sell</mat-icon>
+            Etiquetas
+          </h3>
+          <div class="tags-container">
+            <span *ngFor="let tag of product.tags" class="tag">{{ tag }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions-section">
+        <a mat-raised-button color="primary" class="action-button" [href]="product.url" target="_blank">
+          <mat-icon>open_in_new</mat-icon>
+          Ver proyecto completo
+        </a>
+        <button mat-stroked-button class="action-button" routerLink="/products">
+          <mat-icon>arrow_back</mat-icon>
+          Volver al listado
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

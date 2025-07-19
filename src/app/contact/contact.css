@@ -1,0 +1,199 @@
+.error {
+  color: red;
+  font-size: 0.9em;
+}
+.contact-card {
+  max-width: 420px;
+  margin: 40px auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(56,142,60,0.10);
+  background: #fff;
+}
+.contact-field {
+  width: 100%;
+  margin-bottom: 18px;
+}
+.success {
+  color: #388e3c;
+  font-size: 1.1em;
+  margin-top: 1em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+button[mat-raised-button] {
+  margin-top: 12px;
+  width: 100%;
+}
+form > div {
+  margin-bottom: 1em;
+}
+.custom-contact-card {
+  box-shadow: none !important;
+  border-radius: 18px;
+  padding: 0 !important;
+  background: #000 !important;
+  color: #fff !important;
+}
+.contact-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-bottom: 0;
+}
+.form-row.form-actions {
+  justify-content: flex-start;
+  margin-top: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.contact-field {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-bottom: 24px;
+}
+.full-width {
+  flex: 2 1 100%;
+}
+.contact-btn {
+  background: #3bbf4a !important;
+  color: #111 !important;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: none;
+  margin-left: 0;
+  margin-top: 16px;
+}
+.contact-btn:hover {
+  background: #2ea83a !important;
+}
+.mat-form-field-appearance-standard .mat-form-field-underline {
+  background-color: #444;
+  height: 2px;
+}
+.mat-form-field-appearance-standard .mat-form-field-underline .mat-form-field-ripple {
+  background-color: #3bbf4a;
+}
+.mat-form-field-appearance-standard .mat-form-field-label {
+  color: #fff !important;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.mat-form-field-appearance-standard .mat-input-element {
+  color: #fff !important;
+  font-size: 1.1rem;
+}
+.mat-select-value, .mat-select-placeholder {
+  color: #fff !important;
+  opacity: 1;
+}
+
+/* Estilos para el panel desplegable de mat-select */
+.mat-select-panel {
+  background: #000 !important;
+  color: #fff !important;
+  border: 1px solid #333 !important;
+}
+
+.mat-option {
+  color: #fff !important;
+  background: #000 !important;
+}
+
+.mat-option:hover:not(.mat-option-disabled) {
+  background: #333 !important;
+}
+
+.mat-option.mat-selected:not(.mat-option-multiple) {
+  background: #3bbf4a !important;
+  color: #000 !important;
+}
+
+.mat-option.mat-active {
+  background: #333 !important;
+  color: #fff !important;
+}
+
+/* Estilos para el overlay del select */
+.cdk-overlay-pane .mat-select-panel {
+  background: #000 !important;
+}
+
+/* Estilos más específicos y agresivos */
+.cdk-overlay-container .mat-select-panel,
+.cdk-overlay-container .mat-select-panel .mat-option,
+.cdk-overlay-container .mat-select-panel .mat-option:hover,
+.cdk-overlay-container .mat-select-panel .mat-option.mat-selected,
+.cdk-overlay-container .mat-select-panel .mat-option.mat-active {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.cdk-overlay-container .mat-select-panel .mat-option:hover:not(.mat-option-disabled) {
+  background-color: #333 !important;
+}
+
+.cdk-overlay-container .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background-color: #3bbf4a !important;
+  color: #000 !important;
+}
+
+/* Estilos globales para todos los mat-select */
+::ng-deep .mat-select-panel {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+::ng-deep .mat-option {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+::ng-deep .mat-option:hover:not(.mat-option-disabled) {
+  background: #333 !important;
+}
+
+::ng-deep .mat-option.mat-selected:not(.mat-option-multiple) {
+  background: #3bbf4a !important;
+  color: #000 !important;
+}
+
+::placeholder {
+  color: #bbb !important;
+  opacity: 1;
+}
+
+.required-note {
+  color: #fff;
+  font-size: 0.95rem;
+  position: absolute;
+  right: 24px;
+  bottom: 18px;
+  opacity: 0.7;
+}
+@media (max-width: 900px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .contact-btn {
+    width: 100%;
+    margin-left: 0;
+  }
+  .required-note {
+    position: static;
+    margin-top: 12px;
+    right: unset;
+    bottom: unset;
+    text-align: right;
+  }
+} 

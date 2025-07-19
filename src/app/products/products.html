@@ -1,38 +1,67 @@
-<div class="obra-list-container">
-  <h1>Obras</h1>
+<!-- Top Header -->
+<div class="top-header">
+  <div class="header-content">
+    <div class="header-right">
+      <div class="user-info-header">
+        <div class="user-name">Daniel Vergara</div>
+        <div class="user-role">Administrador</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <ng-container *ngIf="loading; else listaObras">
-    <span>Cargando...</span>
-  </ng-container>
-
-  <ng-template #listaObras>
-    <div class="obra-list">
-      <div *ngFor="let obra of products; trackBy: trackByFn" class="obra-card">
-        <img [src]="obra.thumnails" [alt]="obra.title" />
-
-        <h3>{{ obra.title }}</h3>
-        <p>{{ obra.location }}</p>
-
-        <div>
-          <span class="obra-card__monto-original">${{ obra.monto_obra }}</span>
-          <span class="obra-card__monto-final">${{ obra.nuevo_monto_obra }}</span>
+<!-- Main Content -->
+<div class="main-content">
+  <div class="content-header">
+    <h2 class="content-title">
+      <mat-icon class="title-icon">play_arrow</mat-icon>
+      Iniciado
+    </h2>
+  </div>
+  
+  <div *ngIf="loading" class="loading">Cargando productos...</div>
+  
+  <div *ngIf="!loading && viewMode === 'cards'" class="projects-grid">
+    <div *ngFor="let obra of filteredProducts; trackBy: trackByFn" class="project-card">
+      <div class="card-image-container">
+        <img [src]="obra.thumnails" [alt]="obra.nombre_barrio" />
+        <div class="date-overlay">
+          <span>{{ obra.fecha_inicio | date:'dd/MM/yyyy' }}</span>
         </div>
-
-        <div>
-          <p>Inicio: {{ obra.fecha_inicio | date:'dd/MM/yyyy' }}</p>
-          <p>Fin: {{ obra.fecha_fin | date:'dd/MM/yyyy' }}</p>
+      </div>
+      <div class="card-content">
+        <h4 class="project-title">{{ obra.nombre_barrio }}</h4>
+        <div class="project-location">{{ obra.location || 'Sin dirección' }}</div>
+        <div class="project-info">
+          <div class="price-info">
+            <span>$ {{ obra.nuevo_monto_obra }}</span>
+          </div>
+          <div class="area-info">
+            <span>55 ft2</span>
+          </div>
         </div>
-
-        <p>Estado: {{ obra.status }}</p>
-        <a [href]="obra.url" target="_blank">Ver proyecto</a>
-
-        <div *ngIf="obra.tags?.length > 0">
-          <p>Tags:</p>
-          <ul>
-            <li *ngFor="let tag of obra.tags">{{ tag }}</li>
-          </ul>
+        <div class="card-actions">
+          <button mat-raised-button color="primary" class="detail-button" [routerLink]="['/products', obra.id]">
+            Ver detalles
+          </button>
         </div>
       </div>
     </div>
-  </ng-template>
+  </div>
+  
+  <div *ngIf="!loading && viewMode === 'list'" class="list-view">
+    <mat-list>
+      <mat-list-item *ngFor="let obra of filteredProducts; trackBy: trackByFn">
+        <img matListAvatar [src]="obra.thumnails" [alt]="obra.nombre_barrio" />
+        <div matLine>{{ obra.nombre_barrio }}</div>
+        <div matLine class="obra-location">{{ obra.location }}</div>
+        <div matLine class="obra-badges">
+          <span class="obra-badge price">$ {{ obra.nuevo_monto_obra }}</span>
+        </div>
+        <button mat-button color="primary" [routerLink]="['/products', obra.id]">
+          Ver detalles
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </div>
 </div>

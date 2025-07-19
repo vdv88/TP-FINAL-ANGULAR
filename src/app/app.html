@@ -1,6 +1,10 @@
-
-
-
-
-<!-- router-oulet es donde se va a renderizar el contenido de la ruta en la que estamos -->
-<router-outlet />
+<mat-toolbar color="primary" class="app-toolbar">
+  <a mat-button routerLink="/home" class="brand-title brand-link">OffSite</a>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/about" class="toolbar-btn">Quienes somos</a>
+  <a mat-button routerLink="/login" class="toolbar-btn">Ingresar</a>
+  <a mat-button routerLink="/logout" class="toolbar-btn">Salir</a>
+</mat-toolbar>
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>
